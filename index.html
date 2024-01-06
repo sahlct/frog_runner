@@ -27,38 +27,52 @@
     </div>
 
     <script>
-        let Left=0,Top=0;
+        let Left = 0, Top = 0;
         let bug = document.getElementById("frog");
         let mainelament = document.querySelector(".container-fluid");
 
-        function right(){
+        function right() {
             Left = Math.min(Left + 100, mainelament.offsetWidth - bug.offsetWidth);
             document.getElementById("frog").style.transform = `rotate(90deg)`;
-            move()
+            move();
         }
         function left() {
             Left = Math.max(Left - 100, 0);
             document.getElementById("frog").style.transform = `rotate(270deg)`;
-            move()
+            move();
         }
         function up() {
             Top = Math.max(Top - 100, 0);
-            document.getElementById("frog").style.transform = `rotate(360deg)`;
-            move()
+            document.getElementById("frog").style.transform = `rotate(0deg)`;
+            move();
         }
         function down() {
             document.getElementById("frog").style.transform = `rotate(180deg)`;
             Top = Math.min(Top + 100, mainelament.offsetHeight - bug.offsetHeight);
-            move()
+            move();
         }
         function move() {
-            document.getElementById("frog").style.left = `${Left}px`
-            document.getElementById("frog").style.top = `${Top}px`
+            document.getElementById("frog").style.left = `${Left}px`;
+            document.getElementById("frog").style.top = `${Top}px`;
         }
-        
 
-       
-        
+        document.addEventListener('keydown', function (event) {
+            switch (event.key) {
+                case 'ArrowUp':
+                    up();
+                    break;
+                case 'ArrowDown':
+                    down();
+                    break;
+                case 'ArrowLeft':
+                    left();
+                    break;
+                case 'ArrowRight':
+                    right();
+                    break;
+            }
+        });
+
     </script>
 
 
